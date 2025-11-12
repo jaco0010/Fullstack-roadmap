@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+    <style>
+        del {
+            background-color: rgb(255, 18, 18, 0.564);
+
+
+        }
+
+        ins {
+            background-color: rgb(56, 155, 56, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        Tasks
+    </h2>
+    <ol id="taskList">
+        <li>wake up</li>
+    </ol>
+    <input type="text" id="task">
+    <button id="add_task_button">Add Task</button>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const button = document.getElementById('add_task_button');
+
+            const input = document.getElementById('task');
+
+            const list = document.getElementById('taskList');
+
+
+
+            button.addEventListener('click', function () {
+
+                const newTaskText = input.value.trim();
+
+                if (newTaskText === '') {
+
+                    alert('Please enter a task');
+
+                    return;
+                }
+
+                const existingItems = list.getElementsByTagName('li');
+
+                if (existingItems.length > 0) {
+
+                    const lastItem = existingItems[existingItems.length - 1];
+
+
+                    if (!lastItem.querySelector('del')) {
+
+                        const text = lastItem.textContent;
+
+                        lastItem.innerHTML = '<del>' + text + '</del>';
+                    }
+                }
+
+                const li = document.createElement('li');
+
+
+                li.innerHTML = '<ins>' + newTaskText + '</ins>';
+
+                list.appendChild(li);
+
+                input.value = '';
+
+                input.focus();
+            });
+        });
+    </script>
+</body>
+
+</html>

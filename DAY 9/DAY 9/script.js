@@ -1,5 +1,5 @@
 
-
+//Cons es una palabra reservada que declara constantes 
   const form = document.getElementById("article-form");
   const imageUrl = document.getElementById("image-url");
   const title = document.getElementById("title");
